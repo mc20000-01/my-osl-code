@@ -107,6 +107,5 @@ def main() (
     centext cur 8 : c#icon_colour
   )
 
-  /
 )
 
