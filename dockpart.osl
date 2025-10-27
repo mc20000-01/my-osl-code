@@ -16,7 +16,7 @@ widthdock = {
 clockwidth = 40
 searchWidth = 200
 appmnuicnwidth = 55
-width = searchWidth + appmnuicnwidth + widthdock +clockwidth
+width = background_width //searchWidth + appmnuicnwidth + widthdock +clockwidth
 isOpen = false
 
 sec = seconds
