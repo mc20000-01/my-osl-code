@@ -1,6 +1,20 @@
-
+widthdock = {
+  w: 0,
+  _get: def() -> (
+    include user_folder ++ "/dock"
+    self.w = data.len * 50 - 15
+    if data.len == 0 (
+      self.w = 0
+    )
+    self.dock @= data
+    return self.w
+  ),
+  _set: def(value) -> (
+    self.w = value.toNum()
+  )
+}
 searchWidth = 300
-width = searchWidth + 55
+width = searchWidth + 55 + widthdock
 isOpen = false
 
 def conditions() (
@@ -32,8 +46,95 @@ def main() (
 
   if inputs.selected.id == "content" and !isOpen (
     isOpen = true
-    void window.create(window.file.uuid)
+    window.create(window.file.uuid)
   )
 
   void ("window.dock_search_text =" + input_content.JsonStringify()).eval()
+  
+  local x = x_position
+  change_x 10 + self.widthdock.toNum() / 2
+  square self.widthdock.toNum() height 30 1 0 1
+  if mouse_touching (
+    cursor self.cursor
+  )
+  cur = null
+  if file_dropped != 0 (
+    local data = open(user_folder ++ "/dock.folder")
+    void data.delete(file_dropped)
+    pos = round(mouse_x - (x - 25) / 50)
+    void data.insert(pos, file_dropped)
+    file "set" 4 data
+    file "close"
+    self.dock @= data
+    file_dropped = 0
+  )
+  goto x + 20 y
+  self.cursor = null
+  for i self.dock.len (
+    local app @= dock[i]
+    file = open(app, [2])
+    file "render" 1.7
+    square 45 45 0 0 1
+    file "interact"
+    if data == "open" (
+      file "start"
+      // check the output of the interaction
+    )
+    if mouse_touching (
+      self.cursor = "pointer"
+      curx = x_position
+      cur = file[1]
+    )
+    rightclick "file" app
+    change_x 50
+  )
+  if cur != null (
+    goto curx 15
+    square cur.len * 8 10 12 : c#dock_colour
+    centext cur 8 : c#icon_colour
+  )
+  
+  local x = x_position
+  local y = y_position
+  change_x 52.5
+  square 105 height 20 0 1
+  if clicked and mouse_ondown (
+    window.create("Origin/(A) System/Docks/Time_Info.osl", {
+      x: x_position + frame.x - 97,
+      y: y_position + frame.y + 87,
+      child: true
+    })
+  )
+
+  local is12h = user.timeformat.hours == "12h"
+  local time = time.hour
+
+  if is12h (
+    if hour > 12 (
+      time = (hour - 12)
+        .toStr()
+        .padStart("0", 2)
+    )
+    if hour < 1 (
+      time = "12"
+    )
+  )
+
+  time ++= ":" ++ minute
+
+  if user.timeformat.show_seconds (
+    time ++= ":" ++ second
+  )
+  if is12h (
+    time ++= hour < 12 ? " AM" " PM"
+  )
+  
+  self.sec = second
+  local btxt = day.trim(1,3) + day_number + month.trim(1,3)
+  self.width = max(btxt.len * 8, time.len * 9)
+  goto x y + 10
+  text time 9 : c#icon_colour
+  goto x y - 10
+  text btxt 8 : c#icon_colour
 )
+
