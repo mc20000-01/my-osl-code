@@ -14,7 +14,7 @@ widthdock = {
   )
 }
 clockwidth = 40
-searchWidth = 300
+searchWidth = 200
 appmnuicnwidth = 55
 width = searchWidth + appmnuicnwidth + widthdock +clockwidth
 isOpen = false
