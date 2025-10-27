@@ -28,6 +28,7 @@ def conditions() (
 )
 
 def main() (
+  set_x 0 - width / 2
   change_x 20
 
   icon "atom" 1 : c#icon_colour
