@@ -13,9 +13,15 @@ widthdock = {
     self.w = value.toNum()
   )
 }
+clockwidth = 40
 searchWidth = 300
-width = searchWidth + 55 + widthdock
+appmnuicnwidth = 55
+width = searchWidth + appmnuicnwidth + widthdock +clockwidth
 isOpen = false
+
+sec = seconds
+
+log ("width is" + width)
 
 def conditions() (
   return false
@@ -136,5 +142,7 @@ def main() (
   text time 9 : c#icon_colour
   goto x y - 10
   text btxt 8 : c#icon_colour
+  
+  log ("x is" + x_position)
 )
 
