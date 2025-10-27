@@ -1,0 +1,39 @@
+
+searchWidth = 300
+width = searchWidth + 55
+isOpen = false
+
+def conditions() (
+  return false
+)
+
+def main() (
+  change_x 20
+
+  icon "atom" 1 : c#icon_colour
+  if onclick (
+    open = "Origin/(A) System/System Apps/Origin_Start.osl"
+  )
+  
+  change_x 32.5
+
+  change_x searchWidth / 2
+  square searchWidth - 10 20 20 : c#prim
+  change_x searchWidth / -2 - 5
+
+  change_x 20
+  
+  icon "search" .75 : c#icon_colour
+
+  local inputWidth @= searchWidth - 40
+  change_x inputWidth / 2 + 22.5
+  
+  input inputWidth 30 "content" "" 2 icon_colour : c#prim
+
+  if inputs.selected.id == "content" and !isOpen (
+    isOpen = true
+    void window.create(window.file.uuid)
+  )
+
+  void ("window.dock_search_text =" + input_content.JsonStringify()).eval()
+)
