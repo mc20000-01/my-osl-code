@@ -53,7 +53,7 @@ def main() (
   local inputWidth @= searchWidth - 40
   change_x inputWidth / 2 + 22.5
   
-  input inputWidth 30 "content" "" 2 icon_colour : c#prim
+  input inputWidth 30 "content" "" 2 icon_colour : c#prim   //not finishd
 
   if inputs.selected.id == "content" and !isOpen (
     isOpen = true
