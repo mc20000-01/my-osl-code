@@ -29,13 +29,18 @@ def conditions() (
 
 def main() (
   set_x 0 - width / 2
+
+  //---------------------------------------app menu---------------------------------------
+
   change_x 20
 
   icon "atom" 1 : c#icon_colour
   if onclick (
     open = "Origin/(A) System/System Apps/Origin_Start.osl"
   )
-  
+
+  //---------------------------------------search---------------------------------------
+
   change_x 32.5
 
   change_x searchWidth / 2
@@ -58,6 +63,8 @@ def main() (
 
   void ("window.dock_search_text =" + input_content.JsonStringify()).eval()
   
+//---------------------------------------pined apps---------------------------------------
+
   local x = x_position
   change_x 10 + self.widthdock.toNum() / 2
   square self.widthdock.toNum() height 30 1 0 1
@@ -100,7 +107,9 @@ def main() (
     square cur.len * 8 10 12 : c#dock_colour
     centext cur 8 : c#icon_colour
   )
-  
+
+  //---------------------------------------clock---------------------------------------
+
   local x = x_position
   local y = y_position
   change_x 52.5
