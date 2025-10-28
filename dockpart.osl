@@ -1,7 +1,7 @@
 widthdock = {
   w: 0,
   _get: def() -> (
-    include user_folder ++ "/dock"
+    include user_folder ++ "/applacations"
     self.w = data.len * 50 - 15
     if data.len == 0 (
       self.w = 0
@@ -72,7 +72,7 @@ def main() (
   )
   cur = null
   if file_dropped != 0 (
-    local data = open(user_folder ++ "/dock.folder")
+    local data = open(user_folder ++ "/applacations.folder")
     void data.delete(file_dropped)
     pos = round(mouse_x - (x - 25) / 50)
     void data.insert(pos, file_dropped)
