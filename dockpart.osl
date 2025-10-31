@@ -65,7 +65,7 @@ def main() (
 //---------------------------------------pined apps---------------------------------------
 
   local x = x_position
-  change_x searchwidth + self.widthdock.toNum() / 2
+  change_x searchwidth + self.widthdock.toNum()
   square self.widthdock.toNum() height 30 1 0 1
   if mouse_touching (
     cursor self.cursor
