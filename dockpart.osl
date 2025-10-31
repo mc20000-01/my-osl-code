@@ -21,7 +21,6 @@ isOpen = false
 
 sec = seconds
 
-log ("width is" + width)
 
 def conditions() (
   return false
@@ -57,7 +56,11 @@ def main() (
 
   if inputs.selected.id == "content" and !isOpen (
     isOpen = true
-    window.create(window.file.uuid)
+    window.create(origin/(c) users/sandisk/desktop/popup.osl){
+        passed_data: content
+        x: x_position
+        y: y_position + 10
+    }
   )
 
   void ("window.dock_search_text =" + input_content.JsonStringify()).eval()
