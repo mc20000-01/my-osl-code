@@ -1,1 +1,2 @@
-log (passed_data)
+mainloop:
+  log (passed_data)
