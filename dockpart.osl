@@ -36,7 +36,7 @@ def main() (
 
   icon "atom" 1 : c#icon_colour
   if onclick (
-    open = "Origin/(A) System/System Apps/Origin_Start.osl"
+    open = "origin/(c) users/sandisk/desktop/betterstart.osl"
   )
 
   //---------------------------------------search---------------------------------------
@@ -54,19 +54,19 @@ def main() (
   local inputWidth @= searchWidth - 40
   change_x inputWidth / 2 + 22.5
   
-  input inputWidth 30 "content" "" 2 icon_colour : c#000000   //not finishd
+  input inputWidth 30 "content" "" 2 icon_colour : c#000000
 
   if inputs.selected.id == "content" and !isOpen (
     isOpen = true
-    window.create(origin/(c) users/sandisk/desktop/popup.osl){
+    window.create("origin/(c) users/sandisk/desktop/popup.osl",{
         passed_data: content
         x: x_position
         y: y_position + 10
-    }
+    })
   )
 
   void ("window.dock_search_text =" + input_content.JsonStringify()).eval()
-  
+  log "content = " ++ content
 //---------------------------------------pined apps---------------------------------------
   
   change_x searchWidth / 2
