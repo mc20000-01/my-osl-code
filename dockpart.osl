@@ -16,7 +16,9 @@ widthdock = {
 clockwidth = 40
 searchWidth = 200
 appmnuicnwidth = 55
-width = screensize_x - 10 //searchWidth + appmnuicnwidth + widthdock +clockwidth
+
+width = screensize_x - 20 //searchWidth + appmnuicnwidth + widthdock +clockwidth
+
 isOpen = false
 
 sec = seconds
@@ -42,8 +44,8 @@ def main() (
   change_x 32.5
 
   change_x searchWidth / 2
-  square searchWidth - 10 20 20 : c#prim
-  change_x searchWidth / -2 - 5
+  square searchWidth - 10 20 20 : c#000000
+  change_x searchWidth / -2 -5
 
   change_x 20
   
@@ -52,7 +54,7 @@ def main() (
   local inputWidth @= searchWidth - 40
   change_x inputWidth / 2 + 22.5
   
-  input inputWidth 30 "content" "" 2 icon_colour : c#prim   //not finishd
+  input inputWidth 30 "content" "" 2 icon_colour : c#000000   //not finishd
 
   if inputs.selected.id == "content" and !isOpen (
     isOpen = true
@@ -66,8 +68,8 @@ def main() (
   void ("window.dock_search_text =" + input_content.JsonStringify()).eval()
   
 //---------------------------------------pined apps---------------------------------------
-
-  change_x searchwidth + self.widthdock.toNum()
+  
+  change_x searchWidth / 2
   local x = x_position
   square self.widthdock.toNum() height 30 1 0 1
   if mouse_touching (
