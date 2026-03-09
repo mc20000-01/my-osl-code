@@ -34,7 +34,8 @@ clockwidth = 40
 searchWidth = 200
 appmnuicnwidth = 55
 
-width = screensize_x - 20 //searchWidth + appmnuicnwidth + widthdock +clockwidth
+width = screensize_x - 20
+//searchWidth + appmnuicnwidth + widthdock +clockwidth
 
 isOpen = false
 
@@ -174,13 +175,13 @@ def main() (
     void data.insert(pos, file_dropped)
     file "set" 4 data
     file "close"
-    self.dock @= data
+    self.drive @= data
     file_dropped = 0
   )
   change_y 9
   set_x x_position + 20 
   self.cursor = null
-  for i self.dock.len (
+  for i self.dive.len (
     local app @= dock[i]
     file = open(app, [2])
     file "render" 1.3
